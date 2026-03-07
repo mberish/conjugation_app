@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Russian Present Tense Conjugation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0d14;
+    --surface: #161220;
+    --border: #241e33;
+    --accent: #a87fd4;
+    --accent2: #7eb8c9;
+    --accent3: #d4826a;
+    --text: #e8e3f0;
+    --muted: #6b6880;
+    --highlight: #1c1728;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Code Pro', monospace;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  header {
+    text-align: center;
+    padding: 3rem 0 2.5rem;
+    position: relative;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--accent));
+  }
+
+  .lang-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--text); line-height: 1.1; margin-bottom: 0.5rem; }
+  h1 span { color: var(--accent); }
+  .subtitle { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+
+  .intro-box {
+    max-width: 760px; margin: 2rem auto;
+    border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    background: var(--surface); padding: 1.25rem 1.5rem;
+    font-size: 0.82rem; line-height: 1.8; color: #b0abbe;
+  }
+  .intro-box strong { color: var(--accent); font-weight: 600; }
+
+  .tabs {
+    display: flex; justify-content: center; gap: 0.25rem;
+    flex-wrap: wrap; margin: 2rem 0 1.5rem;
+  }
+
+  .tab-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--muted); font-family: 'Source Code Pro', monospace;
+    font-size: 0.72rem; letter-spacing: 0.1em; padding: 0.5rem 1rem;
+    cursor: pointer; text-transform: uppercase; transition: all 0.2s;
+  }
+  .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .tab-btn.active { background: var(--accent); color: #0f0d14; border-color: var(--accent); font-weight: 600; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem; max-width: 1100px; margin: 0 auto;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--card-accent, var(--accent));
+  }
+
+  .card-header {
+    padding: 1rem 1.25rem 0.75rem; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem;
+  }
+
+  .verb-ru { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--text); }
+  .verb-en { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+  .conj-class {
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--card-accent, var(--accent)); border: 1px solid var(--card-accent, var(--accent));
+    padding: 0.15rem 0.4rem; white-space: nowrap; flex-shrink: 0;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th {
+    padding: 0.5rem 1.25rem; text-align: left; font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    background: var(--highlight); font-weight: 400;
+  }
+  td { padding: 0.55rem 1.25rem; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--highlight); }
+  .pronoun { color: var(--muted); font-size: 0.72rem; width: 45%; }
+  .form { color: var(--text); font-weight: 600; font-size: 0.85rem; }
+  .form em { color: var(--card-accent, var(--accent)); font-style: normal; font-weight: 700; }
+  .form .mut { color: #e8c87a; font-style: normal; font-weight: 700; }
+
+  .pattern-grid {
+    max-width: 1100px; margin: 1.5rem auto 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+  }
+  .pattern-card { background: var(--surface); border: 1px solid var(--border); padding: 1rem 1.25rem; animation: fadeUp 0.4s ease both; }
+  .pattern-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .pattern-endings { display: flex; flex-direction: column; gap: 0.2rem; }
+  .ending-row { display: flex; justify-content: space-between; font-size: 0.78rem; }
+  .ending-pronoun { color: var(--muted); }
+
+  .notes {
+    max-width: 1100px; margin: 2rem auto 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2); padding: 1.25rem 1.5rem;
+  }
+  .notes h3 { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  .notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .notes li { font-size: 0.8rem; color: #b0abbe; line-height: 1.6; padding-left: 1rem; position: relative; }
+  .notes li::before { content: '→'; position: absolute; left: 0; color: var(--accent2); }
+
+  .mutation-grid {
+    max-width: 1100px; margin: 1.5rem auto 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem;
+  }
+  .mut-card {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.75rem;
+    animation: fadeUp 0.3s ease both;
+  }
+  .mut-arrow { font-size: 1rem; color: #e8c87a; font-weight: 700; }
+  .mut-example { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section-divider {
+    max-width: 1100px; margin: 0 auto 0.75rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+  .section-divider span { color: var(--accent); }
+
+  /* ── Test styles ── */
+  #answer-input:focus { border-color: var(--accent2) !important; }
+  #answer-input.correct { border-color: #6db38a !important; background: rgba(109,179,138,0.07) !important; }
+  #answer-input.incorrect { border-color: var(--accent3) !important; background: rgba(212,130,106,0.07) !important; }
+  .result-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.4rem 0; border-bottom:1px solid var(--border); font-size:0.75rem; gap:1rem; flex-wrap:wrap; }
+  .result-row:last-child { border-bottom:none; }
+  .result-correct { color:#6db38a; }
+  .result-incorrect { color:var(--accent3); }
+
+  footer { text-align: center; margin-top: 4rem; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-label">Russian · Русский язык</div>
+  <h1>Present Tense<br><span>Conjugation</span></h1>
+  <div class="subtitle">Настоящее время · Both conjugation classes</div>
+</header>
+
+<div class="intro-box">
+  Russian verbs fall into <strong>two conjugation classes</strong>. The <strong>1st conjugation (е-conjugation)</strong> uses the vowel <em>е/ё</em> in its endings and covers most <em>-ать</em> verbs. The <strong>2nd conjugation (и-conjugation)</strong> uses <em>и</em> and covers most <em>-ить</em> verbs plus a small set of <em>-еть/-ать</em> exceptions. In the 2nd conjugation, the stem's final consonant often mutates in the <strong>я-form only</strong> (е.g. в→вл, д→ж, т→ч). Reflexive verbs add <strong>-сь</strong> after vowel endings (я, вы) and <strong>-ся</strong> after all other endings.
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('all',this)">All Classes</button>
+  <button class="tab-btn" onclick="showTab('conj1',this)">1st Conjugation</button>
+  <button class="tab-btn" onclick="showTab('conj2',this)">2nd Conjugation</button>
+  <button class="tab-btn" onclick="showTab('reflexive',this)">Reflexive Verbs</button>
+  <button class="tab-btn" onclick="showTab('mutations',this)">Consonant Mutations</button>
+  <button class="tab-btn" onclick="showTab('endings',this)">Endings Chart</button>
+  <button class="tab-btn" onclick="showTab('test',this);initTest()">✦ Test Yourself</button>
+</div>
+
+<!-- ══════════════ ALL TAB ══════════════ -->
+<div id="all" class="tab-content active">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;">One example from each class</p>
+  </div>
+  <div class="grid">
+
+    <div class="card" style="--card-accent:#a87fd4">
+      <div class="card-header">
+        <div><div class="verb-ru">читать</div><div class="verb-en">to read</div></div>
+        <div class="conj-class">1st conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я (I)</td><td class="form">чита<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты (you sg.)</td><td class="form">чита<em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она (he/she)</td><td class="form">чита<em>ет</em></td></tr>
+        <tr><td class="pronoun">мы (we)</td><td class="form">чита<em>ем</em></td></tr>
+        <tr><td class="pronoun">вы (you pl./formal)</td><td class="form">чита<em>ете</em></td></tr>
+        <tr><td class="pronoun">они (they)</td><td class="form">чита<em>ют</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7eb8c9">
+      <div class="card-header">
+        <div><div class="verb-ru">говорить</div><div class="verb-en">to speak</div></div>
+        <div class="conj-class">2nd conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">говор<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">говор<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">говор<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">говор<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">говор<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">говор<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">любить</div><div class="verb-en">to love</div></div>
+        <div class="conj-class">2nd · в→вл</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">лю<span class="mut">бл</span><em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">люб<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">люб<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">люб<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">люб<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">люб<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">учиться</div><div class="verb-en">to study (refl.)</div></div>
+        <div class="conj-class">2nd refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">уч<em>усь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">уч<em>ишься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">уч<em>ится</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">уч<em>имся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">уч<em>итесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">уч<em>атся</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ 1ST CONJUGATION ══════════════ -->
+<div id="conj1" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--accent);">1st Conjugation</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">е-conjugation · mostly -ать verbs · endings use vowel е/ё</p>
+  </div>
+  <div class="section-divider" style="margin-bottom:0.75rem;">No mutation · <span>regular stem</span></div>
+  <div class="grid" style="margin-bottom:1.5rem;">
+
+    <div class="card" style="--card-accent:#a87fd4">
+      <div class="card-header">
+        <div><div class="verb-ru">читать</div><div class="verb-en">to read</div></div>
+        <div class="conj-class">1st conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">чита<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">чита<em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">чита<em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">чита<em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">чита<em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">чита<em>ют</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#a87fd4">
+      <div class="card-header">
+        <div><div class="verb-ru">работать</div><div class="verb-en">to work</div></div>
+        <div class="conj-class">1st conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">работа<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">работа<em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">работа<em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">работа<em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">работа<em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">работа<em>ют</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#a87fd4">
+      <div class="card-header">
+        <div><div class="verb-ru">знать</div><div class="verb-en">to know</div></div>
+        <div class="conj-class">1st conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">зна<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">зна<em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">зна<em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">зна<em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">зна<em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">зна<em>ют</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#a87fd4">
+      <div class="card-header">
+        <div><div class="verb-ru">писать</div><div class="verb-en">to write</div></div>
+        <div class="conj-class">1st · с→ш (all)</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">пи<span class="mut">ш</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">пи<span class="mut">ш</span><em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">пи<span class="mut">ш</span><em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">пи<span class="mut">ш</span><em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">пи<span class="mut">ш</span><em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">пи<span class="mut">ш</span><em>ут</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="section-divider" style="margin:1.5rem 0 0.75rem;">Consonant mutation in ALL forms · <span>stem changes throughout</span></div>
+  <div class="grid" style="margin-bottom:1.5rem;">
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">плакать</div><div class="verb-en">to cry</div></div>
+        <div class="conj-class">1st · к→ч (all)</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">пла<span class="mut">ч</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">пла<span class="mut">ч</span><em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">пла<span class="mut">ч</span><em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">пла<span class="mut">ч</span><em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">пла<span class="mut">ч</span><em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">пла<span class="mut">ч</span><em>ут</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">искать</div><div class="verb-en">to search / look for</div></div>
+        <div class="conj-class">1st · ск→щ (all)</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">и<span class="mut">щ</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">и<span class="mut">щ</span><em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">и<span class="mut">щ</span><em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">и<span class="mut">щ</span><em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">и<span class="mut">щ</span><em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">и<span class="mut">щ</span><em>ут</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">сказать</div><div class="verb-en">to say / tell</div></div>
+        <div class="conj-class">1st · з→ж (all)</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">ска<span class="mut">ж</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">ска<span class="mut">ж</span><em>ешь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">ска<span class="mut">ж</span><em>ет</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">ска<span class="mut">ж</span><em>ем</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">ска<span class="mut">ж</span><em>ете</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">ска<span class="mut">ж</span><em>ут</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="notes" style="margin-top:0.5rem;">
+    <h3>Notes on the 1st Conjugation</h3>
+    <ul>
+      <li>Most <em>-ать</em> verbs belong here. The vowel <em>е</em> (or <em>ё</em> when stressed) appears in all endings except я and они.</li>
+      <li>In the <strong>я-form</strong>, the ending is <em>-ю</em> (after a vowel stem) or <em>-у</em> (after a consonant or hushing consonant).</li>
+      <li>In the <strong>они-form</strong>, the ending is <em>-ют</em> (after a vowel stem) or <em>-ут</em> (after a consonant).</li>
+      <li>When a stem ends in a mutating consonant (с, з, к, г, ск…), the mutation applies to <strong>every person</strong> — unlike the 2nd conjugation where only я mutates.</li>
+      <li>When the ending is stressed, <em>е</em> becomes <em>ё</em>: e.g. жить → живёшь, живёт…</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ 2ND CONJUGATION ══════════════ -->
+<div id="conj2" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--accent2);">2nd Conjugation</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">и-conjugation · mostly -ить verbs · consonant mutation in я-form only</p>
+  </div>
+
+  <div class="section-divider" style="margin-bottom:0.75rem;">No mutation · <span>stem ends in р, н, л…</span></div>
+  <div class="grid" style="margin-bottom:1.5rem;">
+
+    <div class="card" style="--card-accent:#7eb8c9">
+      <div class="card-header">
+        <div><div class="verb-ru">говорить</div><div class="verb-en">to speak</div></div>
+        <div class="conj-class">2nd conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">говор<em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">говор<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">говор<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">говор<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">говор<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">говор<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7eb8c9">
+      <div class="card-header">
+        <div><div class="verb-ru">учить</div><div class="verb-en">to teach/learn</div></div>
+        <div class="conj-class">2nd conj.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">уч<em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">уч<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">уч<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">уч<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">уч<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">уч<em>ат</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="section-divider" style="margin-bottom:0.75rem;">Labial mutation in я · <span>б→бл · в→вл · п→пл · м→мл · ф→фл</span></div>
+  <div class="grid" style="margin-bottom:1.5rem;">
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">любить</div><div class="verb-en">to love</div></div>
+        <div class="conj-class">2nd · б→бл</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">лю<span class="mut">бл</span><em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">люб<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">люб<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">люб<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">люб<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">люб<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">готовить</div><div class="verb-en">to prepare/cook</div></div>
+        <div class="conj-class">2nd · в→вл</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">гото<span class="mut">вл</span><em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">готов<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">готов<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">готов<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">готов<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">готов<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#d4826a">
+      <div class="card-header">
+        <div><div class="verb-ru">купить</div><div class="verb-en">to buy</div></div>
+        <div class="conj-class">2nd · п→пл</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">ку<span class="mut">пл</span><em>ю</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">куп<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">куп<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">куп<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">куп<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">куп<em>ят</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="section-divider" style="margin-bottom:0.75rem;">Other consonant mutations in я · <span>д→ж · з→ж · с→ш · ст→щ · т→ч</span></div>
+  <div class="grid" style="margin-bottom:1.5rem;">
+
+    <div class="card" style="--card-accent:#b87ea8">
+      <div class="card-header">
+        <div><div class="verb-ru">видеть</div><div class="verb-en">to see</div></div>
+        <div class="conj-class">2nd · д→ж</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">ви<span class="mut">ж</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">вид<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">вид<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">вид<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">вид<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">вид<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#b87ea8">
+      <div class="card-header">
+        <div><div class="verb-ru">просить</div><div class="verb-en">to ask/request</div></div>
+        <div class="conj-class">2nd · с→ш</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">про<span class="mut">ш</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">прос<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">прос<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">прос<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">прос<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">прос<em>ят</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#b87ea8">
+      <div class="card-header">
+        <div><div class="verb-ru">платить</div><div class="verb-en">to pay</div></div>
+        <div class="conj-class">2nd · т→ч</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">пла<span class="mut">ч</span><em>у</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">плат<em>ишь</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">плат<em>ит</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">плат<em>им</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">плат<em>ите</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">плат<em>ят</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="notes" style="margin-top:0.5rem;">
+    <h3>Notes on the 2nd Conjugation</h3>
+    <ul>
+      <li>Most <em>-ить</em> verbs belong here. The vowel <em>и</em> appears in all endings except я and они.</li>
+      <li>In the <strong>я-form only</strong>, the stem-final consonant often mutates. All other forms use the unchanged stem.</li>
+      <li><strong>Labial consonants</strong> (б, в, п, м, ф) insert an <em>л</em>: любить → люблю, готовить → готовлю.</li>
+      <li><strong>Other mutations</strong>: д/з→ж, с→ш, ст→щ, т→ч. Only applies to the я-form.</li>
+      <li>Several common <em>-еть</em> and <em>-ать</em> verbs also follow the 2nd conjugation, e.g. смотреть (to watch), слышать (to hear).</li>
+      <li>In the <strong>они-form</strong>, the ending is <em>-ят</em> (most verbs) or <em>-ат</em> after hushing consonants (ж, ч, ш, щ).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ REFLEXIVE ══════════════ -->
+<div id="reflexive" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#7ec99e;">Reflexive Verbs</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">Возвратные глаголы · Infinitive ends in -ться / -иться / -аться</p>
+  </div>
+
+  <div class="intro-box" style="margin-bottom:1.5rem; border-left-color:#7ec99e;">
+    Conjugate a reflexive verb exactly like its non-reflexive counterpart, then add the reflexive particle: <strong style="color:#7ec99e;">-сь</strong> after a <em>vowel</em> ending (я → …сь, вы → …сь), and <strong style="color:#7ec99e;">-ся</strong> after a <em>consonant</em> ending (all other forms). Both are reduced from the old reflexive pronoun <em>себя</em>.
+  </div>
+
+  <div class="grid">
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">учиться</div><div class="verb-en">to study/learn</div></div>
+        <div class="conj-class">2nd refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">уч<em>усь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">уч<em>ишься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">уч<em>ится</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">уч<em>имся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">уч<em>итесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">уч<em>атся</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">заниматься</div><div class="verb-en">to study/be occupied</div></div>
+        <div class="conj-class">1st refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">занима<em>юсь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">занима<em>ешься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">занима<em>ется</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">занима<em>емся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">занима<em>етесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">занима<em>ются</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">называться</div><div class="verb-en">to be called</div></div>
+        <div class="conj-class">1st refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">называ<em>юсь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">называ<em>ешься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">называ<em>ется</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">называ<em>емся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">называ<em>етесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">называ<em>ются</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">улыбаться</div><div class="verb-en">to smile</div></div>
+        <div class="conj-class">1st refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">улыба<em>юсь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">улыба<em>ешься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">улыба<em>ется</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">улыба<em>емся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">улыба<em>етесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">улыба<em>ются</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">бояться</div><div class="verb-en">to be afraid</div></div>
+        <div class="conj-class">2nd refl.</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">бо<em>юсь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">бо<em>ишься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">бо<em>ится</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">бо<em>имся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">бо<em>итесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">бо<em>ятся</em></td></tr>
+      </table>
+    </div>
+
+    <div class="card" style="--card-accent:#7ec99e">
+      <div class="card-header">
+        <div><div class="verb-ru">нравиться</div><div class="verb-en">to be pleasing / to like</div></div>
+        <div class="conj-class">2nd refl. · в→вл</div>
+      </div>
+      <table>
+        <tr><th>Pronoun</th><th>Form</th></tr>
+        <tr><td class="pronoun">я</td><td class="form">нра<span class="mut">вл</span><em>юсь</em></td></tr>
+        <tr><td class="pronoun">ты</td><td class="form">нрав<em>ишься</em></td></tr>
+        <tr><td class="pronoun">он/она</td><td class="form">нрав<em>ится</em></td></tr>
+        <tr><td class="pronoun">мы</td><td class="form">нрав<em>имся</em></td></tr>
+        <tr><td class="pronoun">вы</td><td class="form">нрав<em>итесь</em></td></tr>
+        <tr><td class="pronoun">они</td><td class="form">нрав<em>ятся</em></td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="notes" style="margin-top:1.5rem; border-left-color:#7ec99e;">
+    <h3 style="color:#7ec99e;">Notes on Reflexive Verbs</h3>
+    <ul>
+      <li>Add <strong>-сь</strong> after a vowel-ending form (я and вы), and <strong>-ся</strong> after a consonant-ending form (ты, он, мы, они).</li>
+      <li>The underlying conjugation class (1st or 2nd) is the same as the non-reflexive base verb.</li>
+      <li>Consonant mutations still apply in the я-form for 2nd conjugation reflexives (e.g. нравиться → я нравлюсь).</li>
+      <li>Many reflexive verbs have no non-reflexive counterpart (e.g. бояться, надеяться). Others are reflexive versions of transitive verbs (учить → учиться).</li>
+      <li>Note that -тся (he/she/it, they) and -ться (infinitive) are pronounced identically as [цa] — a common source of spelling errors.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ MUTATIONS TAB ══════════════ -->
+<div id="mutations" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#e8c87a;">Consonant Mutations</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">Чередование согласных · Behaviour differs between conjugation classes</p>
+  </div>
+
+  <div class="intro-box" style="margin-bottom:1.5rem; border-left-color:#e8c87a;">
+    Consonant mutations work differently depending on conjugation class. In <strong style="color:#e8c87a;">1st conjugation (-ать) verbs</strong>, if the stem ends in a mutating consonant, it changes in <strong>every</strong> present tense form — я, ты, он, мы, вы, они all use the mutated stem. In <strong style="color:#e8c87a;">2nd conjugation (-ить) verbs</strong>, the mutation occurs <strong>only in the я-form</strong> — all other forms keep the original stem consonant.
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto 1.5rem;">
+
+    <!-- 1st conjugation mutations -->
+    <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">1st Conjugation · mutation in ALL forms</div>
+    <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem;">These stem consonants mutate across every person — пишу, пишешь, пишет, пишем, пишете, пишут.</div>
+    <div class="mutation-grid" style="margin:0 0 2rem;">
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">с <span class="mut-arrow">→</span> ш</div><div class="mut-example">писать → пишу/пишешь…</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">з <span class="mut-arrow">→</span> ж</div><div class="mut-example">сказать → скажу/скажешь…</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">к <span class="mut-arrow">→</span> ч</div><div class="mut-example">плакать → плачу/плачешь…</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">г <span class="mut-arrow">→</span> ж</div><div class="mut-example">двигать → движу/движешь…</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">ск <span class="mut-arrow">→</span> щ</div><div class="mut-example">искать → ищу/ищешь…</div></div>
+      </div>
+    </div>
+
+    <!-- 2nd conjugation mutations -->
+    <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.5rem;">2nd Conjugation · mutation in я-form ONLY</div>
+    <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem;">Only я mutates — all other forms keep the original stem: люблю, но любишь, любит…</div>
+
+    <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#e8c87a;margin:0 0 0.5rem;">Labial consonants · insert л</div>
+    <div class="mutation-grid" style="margin:0 0 1rem;">
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">б <span class="mut-arrow">→</span> бл</div><div class="mut-example">любить → люблю (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">в <span class="mut-arrow">→</span> вл</div><div class="mut-example">готовить → готовлю (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">п <span class="mut-arrow">→</span> пл</div><div class="mut-example">купить → куплю (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">м <span class="mut-arrow">→</span> мл</div><div class="mut-example">кормить → кормлю (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">ф <span class="mut-arrow">→</span> фл</div><div class="mut-example">графить → графлю (я only)</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#e8c87a;margin:0 0 0.5rem;">Other consonants</div>
+    <div class="mutation-grid">
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">д <span class="mut-arrow">→</span> ж</div><div class="mut-example">видеть → вижу (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">з <span class="mut-arrow">→</span> ж</div><div class="mut-example">возить → вожу (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">с <span class="mut-arrow">→</span> ш</div><div class="mut-example">просить → прошу (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">ст <span class="mut-arrow">→</span> щ</div><div class="mut-example">чистить → чищу (я only)</div></div>
+      </div>
+      <div class="mut-card">
+        <div><div style="font-size:1rem;color:var(--text);font-weight:700;">т <span class="mut-arrow">→</span> ч</div><div class="mut-example">платить → плачу (я only)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes" style="margin-top:1.5rem; border-left-color:#e8c87a;">
+    <h3 style="color:#e8c87a;">Key Rules</h3>
+    <ul>
+      <li>In the <strong>1st conjugation (-ать verbs)</strong>, if the stem ends in a mutating consonant, it mutates in <strong>every</strong> present tense form: писать → пишу, пишешь, пишет, пишем, пишете, пишут.</li>
+      <li>In the <strong>2nd conjugation (-ить verbs)</strong>, the mutation occurs in the <strong>я-form only</strong>. All other forms keep the original stem: любить → люблю, но любишь, любит, любим…</li>
+      <li>Labial mutations (б, в, п, м, ф) insert <em>л</em> rather than replacing the consonant — this only occurs in 2nd conjugation.</li>
+      <li>The same consonant (e.g. с→ш, з→ж) can appear in both conjugations, but the scope of mutation differs: all forms in 1st, я only in 2nd.</li>
+      <li>These mutations arise from historical palatalisation — the ending -ю/-у originally contained a palatal glide that softened the preceding consonant.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ ENDINGS CHART ══════════════ -->
+<div id="endings" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);">Endings Summary</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">Both conjugation classes at a glance</p>
+  </div>
+
+  <div class="pattern-grid">
+
+    <div class="pattern-card" style="border-top:2px solid var(--accent)">
+      <div class="pattern-label" style="color:var(--accent)">1st Conjugation · -ать verbs</div>
+      <div class="pattern-endings">
+        <div class="ending-row"><span class="ending-pronoun">я</span><span style="color:var(--accent);font-weight:600;">-ю / -у</span></div>
+        <div class="ending-row"><span class="ending-pronoun">ты</span><span style="color:var(--accent);font-weight:600;">-ешь / -ёшь</span></div>
+        <div class="ending-row"><span class="ending-pronoun">он/она</span><span style="color:var(--accent);font-weight:600;">-ет / -ёт</span></div>
+        <div class="ending-row"><span class="ending-pronoun">мы</span><span style="color:var(--accent);font-weight:600;">-ем / -ём</span></div>
+        <div class="ending-row"><span class="ending-pronoun">вы</span><span style="color:var(--accent);font-weight:600;">-ете / -ёте</span></div>
+        <div class="ending-row"><span class="ending-pronoun">они</span><span style="color:var(--accent);font-weight:600;">-ют / -ут</span></div>
+      </div>
+    </div>
+
+    <div class="pattern-card" style="border-top:2px solid var(--accent2)">
+      <div class="pattern-label" style="color:var(--accent2)">2nd Conjugation · -ить verbs</div>
+      <div class="pattern-endings">
+        <div class="ending-row"><span class="ending-pronoun">я</span><span style="color:var(--accent2);font-weight:600;">-ю / -у</span></div>
+        <div class="ending-row"><span class="ending-pronoun">ты</span><span style="color:var(--accent2);font-weight:600;">-ишь</span></div>
+        <div class="ending-row"><span class="ending-pronoun">он/она</span><span style="color:var(--accent2);font-weight:600;">-ит</span></div>
+        <div class="ending-row"><span class="ending-pronoun">мы</span><span style="color:var(--accent2);font-weight:600;">-им</span></div>
+        <div class="ending-row"><span class="ending-pronoun">вы</span><span style="color:var(--accent2);font-weight:600;">-ите</span></div>
+        <div class="ending-row"><span class="ending-pronoun">они</span><span style="color:var(--accent2);font-weight:600;">-ят / -ат</span></div>
+      </div>
+    </div>
+
+    <div class="pattern-card" style="border-top:2px solid #7ec99e">
+      <div class="pattern-label" style="color:#7ec99e">Reflexive · add to above</div>
+      <div class="pattern-endings">
+        <div class="ending-row"><span class="ending-pronoun">я</span><span style="color:#7ec99e;font-weight:600;">+ сь</span></div>
+        <div class="ending-row"><span class="ending-pronoun">ты</span><span style="color:#7ec99e;font-weight:600;">+ ся</span></div>
+        <div class="ending-row"><span class="ending-pronoun">он/она</span><span style="color:#7ec99e;font-weight:600;">+ ся</span></div>
+        <div class="ending-row"><span class="ending-pronoun">мы</span><span style="color:#7ec99e;font-weight:600;">+ ся</span></div>
+        <div class="ending-row"><span class="ending-pronoun">вы</span><span style="color:#7ec99e;font-weight:600;">+ сь</span></div>
+        <div class="ending-row"><span class="ending-pronoun">они</span><span style="color:#7ec99e;font-weight:600;">+ ся</span></div>
+      </div>
+    </div>
+
+    <div class="pattern-card" style="border-top:2px solid #e8c87a">
+      <div class="pattern-label" style="color:#e8c87a">Consonant mutations (я only, 2nd conj.)</div>
+      <div class="pattern-endings">
+        <div class="ending-row"><span class="ending-pronoun">б, в, п, м, ф</span><span style="color:#e8c87a;font-weight:600;">+ л</span></div>
+        <div class="ending-row"><span class="ending-pronoun">д, з</span><span style="color:#e8c87a;font-weight:600;">→ ж</span></div>
+        <div class="ending-row"><span class="ending-pronoun">с</span><span style="color:#e8c87a;font-weight:600;">→ ш</span></div>
+        <div class="ending-row"><span class="ending-pronoun">ст</span><span style="color:#e8c87a;font-weight:600;">→ щ</span></div>
+        <div class="ending-row"><span class="ending-pronoun">т</span><span style="color:#e8c87a;font-weight:600;">→ ч</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="notes" style="margin-top:1.5rem;">
+    <h3>Key Grammar Notes</h3>
+    <ul>
+      <li><strong>1st conjugation</strong> (е-conjugation): uses е/ё in all endings except я (-ю/-у) and они (-ют/-ут). Use -ё when the ending is stressed.</li>
+      <li><strong>2nd conjugation</strong> (и-conjugation): uses и in all endings except я (-ю/-у) and они (-ят/-ат after most consonants, -ат after ж/ч/ш/щ).</li>
+      <li>Both conjugations share the same я ending (-ю after vowels, -у after consonants or hushing consonants ж/ч/ш/щ).</li>
+      <li>Russian present tense is only used for <strong>imperfective</strong> verbs. Perfective verbs use the same endings but to express <em>future</em> tense.</li>
+      <li>Subject pronouns are often omitted since the verb ending already identifies the person.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ TEST TAB ══════════════ -->
+<div id="test" class="tab-content">
+  <div style="text-align:center;margin-bottom:1.5rem;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--accent);">Test Yourself</h2>
+    <p style="font-size:0.72rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem;">Type the correct present tense form in Russian</p>
+  </div>
+
+  <div style="max-width:700px;margin:0 auto;">
+
+    <div id="test-settings" style="background:var(--surface);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:1.5rem;">
+      <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Quiz Settings</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;">
+        <label style="font-size:0.75rem;color:var(--muted);">Questions:
+          <select id="q-count" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Source Code Pro',monospace;font-size:0.75rem;padding:0.3rem 0.5rem;margin-left:0.4rem;">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </label>
+        <label style="font-size:0.75rem;color:var(--muted);">Conjugation:
+          <select id="q-class" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Source Code Pro',monospace;font-size:0.75rem;padding:0.3rem 0.5rem;margin-left:0.4rem;">
+            <option value="all">All</option>
+            <option value="1">1st conj. only</option>
+            <option value="1m">1st with mutations</option>
+            <option value="2">2nd conj. only</option>
+            <option value="2m">2nd with mutations</option>
+            <option value="r">Reflexive only</option>
+          </select>
+        </label>
+      </div>
+      <button onclick="startTest()" style="background:var(--accent);color:#0f0d14;border:none;font-family:'Source Code Pro',monospace;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.5rem;cursor:pointer;">Start Quiz</button>
+    </div>
+
+    <div id="quiz-area" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+        <div id="progress-label" style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);"></div>
+        <div id="score-label" style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);"></div>
+      </div>
+      <div style="height:2px;background:var(--border);margin-bottom:1.5rem;">
+        <div id="progress-bar" style="height:100%;background:var(--accent);width:0%;transition:width 0.3s;"></div>
+      </div>
+
+      <div id="question-card" style="background:var(--surface);border:1px solid var(--border);padding:2rem 1.5rem;margin-bottom:1rem;position:relative;">
+        <div id="q-conj-badge" style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.15rem 0.5rem;border:1px solid;display:inline-block;margin-bottom:1rem;"></div>
+        <div style="font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;margin-bottom:0.4rem;">Conjugate in the present tense:</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;" id="q-verb"></div>
+        <div style="font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;" id="q-meaning"></div>
+        <div style="font-size:0.85rem;color:var(--text);margin-bottom:0.75rem;">
+          <span id="q-pronoun" style="color:var(--accent2);font-weight:600;"></span>
+          <span style="color:var(--muted);"> → </span>
+          <span id="q-pronoun2" style="color:var(--muted);font-size:0.72rem;"></span>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <input id="answer-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+            placeholder="type your answer…"
+            style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'Source Code Pro',monospace;font-size:0.95rem;padding:0.6rem 0.9rem;flex:1;outline:none;transition:border-color 0.2s;"
+            onkeydown="if(event.key==='Enter') checkAnswer()" />
+          <button onclick="checkAnswer()" style="background:var(--accent);color:#0f0d14;border:none;font-family:'Source Code Pro',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.65rem 1.1rem;cursor:pointer;white-space:nowrap;">Check</button>
+        </div>
+        <div id="answer-feedback" style="margin-top:0.9rem;font-size:0.82rem;min-height:1.4rem;display:none;"></div>
+        <button id="next-btn" onclick="nextQuestion()" style="display:none;margin-top:0.75rem;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Source Code Pro',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 1rem;cursor:pointer;">Next →</button>
+      </div>
+
+      <div style="text-align:right;margin-bottom:1rem;">
+        <button onclick="showHint()" id="hint-btn" style="background:transparent;border:none;color:var(--muted);font-family:'Source Code Pro',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:underline;">Show hint</button>
+      </div>
+    </div>
+
+    <div id="results-area" style="display:none;background:var(--surface);border:1px solid var(--border);padding:2rem 1.5rem;text-align:center;">
+      <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Quiz Complete</div>
+      <div id="final-score" style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--text);margin-bottom:0.5rem;"></div>
+      <div id="final-msg" style="font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;"></div>
+      <div id="results-breakdown" style="text-align:left;margin-bottom:1.5rem;max-height:320px;overflow-y:auto;"></div>
+      <button onclick="startTest()" style="background:var(--accent);color:#0f0d14;border:none;font-family:'Source Code Pro',monospace;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.5rem;cursor:pointer;margin-right:0.5rem;">Try Again</button>
+      <button onclick="document.getElementById('test-settings').style.display='block';document.getElementById('results-area').style.display='none';" style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Source Code Pro',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1rem;cursor:pointer;">Change Settings</button>
+    </div>
+
+  </div>
+</div>
+
+<footer>Russian Present Tense · Настоящее время · Reference Chart</footer>
+
+<script>
+// ── Verb database ──
+const VERBS = [
+  // 1st conjugation
+  { inf:'читать', en:'to read', cls:'1', badge:'1st conj.', badgeColor:'#a87fd4',
+    forms:{ я:'читаю', ты:'читаешь', 'он/она':'читает', мы:'читаем', вы:'читаете', они:'читают' }},
+  { inf:'работать', en:'to work', cls:'1', badge:'1st conj.', badgeColor:'#a87fd4',
+    forms:{ я:'работаю', ты:'работаешь', 'он/она':'работает', мы:'работаем', вы:'работаете', они:'работают' }},
+  { inf:'знать', en:'to know', cls:'1', badge:'1st conj.', badgeColor:'#a87fd4',
+    forms:{ я:'знаю', ты:'знаешь', 'он/она':'знает', мы:'знаем', вы:'знаете', они:'знают' }},
+  { inf:'думать', en:'to think', cls:'1', badge:'1st conj.', badgeColor:'#a87fd4',
+    forms:{ я:'думаю', ты:'думаешь', 'он/она':'думает', мы:'думаем', вы:'думаете', они:'думают' }},
+  { inf:'понимать', en:'to understand', cls:'1', badge:'1st conj.', badgeColor:'#a87fd4',
+    forms:{ я:'понимаю', ты:'понимаешь', 'он/она':'понимает', мы:'понимаем', вы:'понимаете', они:'понимают' }},
+  { inf:'писать', en:'to write', cls:'1m', badge:'1st conj. с→ш', badgeColor:'#d4826a',
+    forms:{ я:'пишу', ты:'пишешь', 'он/она':'пишет', мы:'пишем', вы:'пишете', они:'пишут' }},
+  { inf:'плакать', en:'to cry', cls:'1m', badge:'1st conj. к→ч', badgeColor:'#d4826a',
+    forms:{ я:'плачу', ты:'плачешь', 'он/она':'плачет', мы:'плачем', вы:'плачете', они:'плачут' }},
+  { inf:'искать', en:'to search/look for', cls:'1m', badge:'1st conj. ск→щ', badgeColor:'#d4826a',
+    forms:{ я:'ищу', ты:'ищешь', 'он/она':'ищет', мы:'ищем', вы:'ищете', они:'ищут' }},
+  { inf:'сказать', en:'to say/tell', cls:'1m', badge:'1st conj. з→ж', badgeColor:'#d4826a',
+    forms:{ я:'скажу', ты:'скажешь', 'он/она':'скажет', мы:'скажем', вы:'скажете', они:'скажут' }},
+  // 2nd conjugation (no mutation)
+  { inf:'говорить', en:'to speak', cls:'2', badge:'2nd conj.', badgeColor:'#7eb8c9',
+    forms:{ я:'говорю', ты:'говоришь', 'он/она':'говорит', мы:'говорим', вы:'говорите', они:'говорят' }},
+  { inf:'учить', en:'to teach/learn', cls:'2', badge:'2nd conj.', badgeColor:'#7eb8c9',
+    forms:{ я:'учу', ты:'учишь', 'он/она':'учит', мы:'учим', вы:'учите', они:'учат' }},
+  { inf:'слышать', en:'to hear', cls:'2', badge:'2nd conj.', badgeColor:'#7eb8c9',
+    forms:{ я:'слышу', ты:'слышишь', 'он/она':'слышит', мы:'слышим', вы:'слышите', они:'слышат' }},
+  { inf:'смотреть', en:'to watch/look', cls:'2', badge:'2nd conj.', badgeColor:'#7eb8c9',
+    forms:{ я:'смотрю', ты:'смотришь', 'он/она':'смотрит', мы:'смотрим', вы:'смотрите', они:'смотрят' }},
+  // 2nd conjugation with mutations
+  { inf:'любить', en:'to love', cls:'2m', badge:'2nd conj. б→бл', badgeColor:'#d4826a',
+    forms:{ я:'люблю', ты:'любишь', 'он/она':'любит', мы:'любим', вы:'любите', они:'любят' }},
+  { inf:'готовить', en:'to cook/prepare', cls:'2m', badge:'2nd conj. в→вл', badgeColor:'#d4826a',
+    forms:{ я:'готовлю', ты:'готовишь', 'он/она':'готовит', мы:'готовим', вы:'готовите', они:'готовят' }},
+  { inf:'купить', en:'to buy', cls:'2m', badge:'2nd conj. п→пл', badgeColor:'#d4826a',
+    forms:{ я:'куплю', ты:'купишь', 'он/она':'купит', мы:'купим', вы:'купите', они:'купят' }},
+  { inf:'видеть', en:'to see', cls:'2m', badge:'2nd conj. д→ж', badgeColor:'#d4826a',
+    forms:{ я:'вижу', ты:'видишь', 'он/она':'видит', мы:'видим', вы:'видите', они:'видят' }},
+  { inf:'просить', en:'to ask/request', cls:'2m', badge:'2nd conj. с→ш', badgeColor:'#d4826a',
+    forms:{ я:'прошу', ты:'просишь', 'он/она':'просит', мы:'просим', вы:'просите', они:'просят' }},
+  { inf:'платить', en:'to pay', cls:'2m', badge:'2nd conj. т→ч', badgeColor:'#d4826a',
+    forms:{ я:'плачу', ты:'платишь', 'он/она':'платит', мы:'платим', вы:'платите', они:'платят' }},
+  // Reflexive
+  { inf:'учиться', en:'to study (refl.)', cls:'r', badge:'2nd refl.', badgeColor:'#7ec99e',
+    forms:{ я:'учусь', ты:'учишься', 'он/она':'учится', мы:'учимся', вы:'учитесь', они:'учатся' }},
+  { inf:'заниматься', en:'to study/be occupied', cls:'r', badge:'1st refl.', badgeColor:'#7ec99e',
+    forms:{ я:'занимаюсь', ты:'занимаешься', 'он/она':'занимается', мы:'занимаемся', вы:'занимаетесь', они:'занимаются' }},
+  { inf:'улыбаться', en:'to smile', cls:'r', badge:'1st refl.', badgeColor:'#7ec99e',
+    forms:{ я:'улыбаюсь', ты:'улыбаешься', 'он/она':'улыбается', мы:'улыбаемся', вы:'улыбаетесь', они:'улыбаются' }},
+  { inf:'бояться', en:'to be afraid', cls:'r', badge:'2nd refl.', badgeColor:'#7ec99e',
+    forms:{ я:'боюсь', ты:'боишься', 'он/она':'боится', мы:'боимся', вы:'боитесь', они:'боятся' }},
+  { inf:'нравиться', en:'to be pleasing', cls:'r', badge:'2nd refl. в→вл', badgeColor:'#7ec99e',
+    forms:{ я:'нравлюсь', ты:'нравишься', 'он/она':'нравится', мы:'нравимся', вы:'нравитесь', они:'нравятся' }},
+  { inf:'называться', en:'to be called', cls:'r', badge:'1st refl.', badgeColor:'#7ec99e',
+    forms:{ я:'называюсь', ты:'называешься', 'он/она':'называется', мы:'называемся', вы:'называетесь', они:'называются' }},
+];
+
+const PRONOUNS = ['я', 'ты', 'он/она', 'мы', 'вы', 'они'];
+const PRONOUN_EN = { я:'I', ты:'you (sg.)', 'он/она':'he/she', мы:'we', вы:'you (pl./formal)', они:'they' };
+
+let questions = [], current = 0, score = 0, answered = false, results = [];
+
+function initTest() {}
+
+function buildQuestions() {
+  const count = parseInt(document.getElementById('q-count').value);
+  const cls = document.getElementById('q-class').value;
+  const pool = cls === 'all' ? VERBS : VERBS.filter(v => v.cls === cls);
+  if (!pool.length) return [];
+  const qs = [];
+  for (let i = 0; i < count; i++) {
+    const verb = pool[Math.floor(Math.random() * pool.length)];
+    const pronoun = PRONOUNS[Math.floor(Math.random() * PRONOUNS.length)];
+    qs.push({ verb, pronoun, answer: verb.forms[pronoun] });
+  }
+  return qs;
+}
+
+function startTest() {
+  questions = buildQuestions();
+  if (!questions.length) return;
+  current = 0; score = 0; answered = false; results = [];
+  document.getElementById('test-settings').style.display = 'none';
+  document.getElementById('results-area').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[current];
+  const total = questions.length;
+
+  document.getElementById('progress-label').textContent = `Question ${current + 1} of ${total}`;
+  document.getElementById('score-label').textContent = `Score: ${score} / ${current}`;
+  document.getElementById('progress-bar').style.width = `${(current / total) * 100}%`;
+
+  const badge = document.getElementById('q-conj-badge');
+  badge.textContent = q.verb.badge;
+  badge.style.color = q.verb.badgeColor;
+  badge.style.borderColor = q.verb.badgeColor;
+
+  document.getElementById('q-verb').textContent = q.verb.inf;
+  document.getElementById('q-meaning').textContent = q.verb.en;
+  document.getElementById('q-pronoun').textContent = q.pronoun;
+  document.getElementById('q-pronoun2').textContent = PRONOUN_EN[q.pronoun];
+
+  const input = document.getElementById('answer-input');
+  input.value = ''; input.className = ''; input.disabled = false;
+  input.style.borderColor = '';
+  document.getElementById('answer-feedback').style.display = 'none';
+  document.getElementById('next-btn').style.display = 'none';
+  document.getElementById('hint-btn').style.display = 'inline';
+  setTimeout(() => input.focus(), 50);
+}
+
+function checkAnswer() {
+  if (answered) { nextQuestion(); return; }
+  const input = document.getElementById('answer-input');
+  const userAnswer = input.value.trim().toLowerCase();
+  const q = questions[current];
+  const correct = q.answer.toLowerCase();
+  const feedback = document.getElementById('answer-feedback');
+  answered = true;
+  input.disabled = true;
+  document.getElementById('hint-btn').style.display = 'none';
+
+  const isCorrect = userAnswer === correct;
+  if (isCorrect) score++;
+
+  results.push({ verb: q.verb.inf, pronoun: q.pronoun, correct: q.answer, given: input.value.trim(), ok: isCorrect });
+
+  input.className = isCorrect ? 'correct' : 'incorrect';
+  feedback.style.display = 'block';
+  feedback.innerHTML = isCorrect
+    ? `<span style="color:#6db38a;">✓ Correct!</span>`
+    : `<span style="color:var(--accent3);">✗ Incorrect.</span> The correct form is <strong style="color:var(--text);">${q.answer}</strong>`;
+
+  document.getElementById('score-label').textContent = `Score: ${score} / ${current + 1}`;
+
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.style.display = 'inline-block';
+  nextBtn.textContent = current + 1 < questions.length ? 'Next →' : 'See Results →';
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) showResults();
+  else renderQuestion();
+}
+
+function showResults() {
+  document.getElementById('quiz-area').style.display = 'none';
+  const res = document.getElementById('results-area');
+  res.style.display = 'block';
+
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+
+  let msg = pct === 100 ? 'Perfect! Отлично!' : pct >= 80 ? 'Great job! Хорошо!' : pct >= 60 ? 'Good effort. Keep practicing!' : 'Keep studying — вы справитесь!';
+  document.getElementById('final-msg').textContent = `${pct}% · ${msg}`;
+
+  document.getElementById('results-breakdown').innerHTML = results.map(r => `
+    <div class="result-row">
+      <span style="color:var(--muted);min-width:70px;">${r.pronoun}</span>
+      <span style="color:var(--text);font-weight:600;">${r.verb}</span>
+      <span style="color:var(--muted);font-size:0.68rem;">→ <em>${r.correct}</em></span>
+      <span class="${r.ok ? 'result-correct' : 'result-incorrect'}">${r.ok ? '✓ ' + r.given : '✗ ' + (r.given || '(blank)')}</span>
+    </div>
+  `).join('');
+}
+
+function showHint() {
+  const q = questions[current];
+  const stem = q.answer.slice(0, Math.max(1, Math.ceil(q.answer.length / 2)));
+  const feedback = document.getElementById('answer-feedback');
+  feedback.style.display = 'block';
+  feedback.innerHTML = `<span style="color:var(--muted);">Hint: starts with <strong style="color:var(--accent2);">${stem}…</strong></span>`;
+  document.getElementById('hint-btn').style.display = 'none';
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
